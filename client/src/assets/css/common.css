@@ -1,0 +1,8 @@
+
+/* 垂直水平居中 */
+.middle-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
