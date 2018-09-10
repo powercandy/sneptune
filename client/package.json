@@ -6,6 +6,8 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "upload": "node scripts/upload.js",
+    "build-release": "npm run build && node scripts/upload.js",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {

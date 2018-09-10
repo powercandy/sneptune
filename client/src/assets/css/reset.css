@@ -1,9 +1,13 @@
 html, body, div, p, 
 h1, h2, h3, h4, h5, h6,
-form, input, label
+form, input, label, ul, li, dl, ol, dt, dd
 {
   margin: 0;
   padding: 0;
+}
+
+image {
+  border: 0;
 }
 
 input {
@@ -13,4 +17,8 @@ input {
 
 i {
   font-style: normal;
+}
+
+li {
+  list-style-type: none;
 }

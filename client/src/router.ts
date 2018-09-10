@@ -17,6 +17,12 @@ const routes: any = [
     path: '/login/:type',
     name: 'login',
     component: () => import('@/views/Login.vue')
+  },
+  /* blog页面 */
+  {
+    path: '/blog',
+    name: 'blog',
+    component: () => import('@/views/Blog.vue')
   }
 ]
 
