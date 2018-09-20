@@ -42,16 +42,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'vue-property-decorator'
 import { listOne } from '../assets/js/config'
-export default Vue.extend({
-  data () {
-    return {
-      list: ['Home', 'Collections', 'Communites', 'Profile', 'People', 'Setting', 'Send Feedback', 'Help'],
-      listOne: listOne
-    }
-  }
-})
+@Component
+export default class Blog extends Vue {
+  list: Array<string> = ['Home', 'Collections', 'Communites', 'Profile', 'People', 'Setting', 'Send Feedback', 'Help']
+  listOne: Array<object> = listOne
+}
 </script>
 
 <style lang="stylus" scoped>

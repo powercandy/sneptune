@@ -33,47 +33,38 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  data () {
-    return {
-      state: this.$route.params.type || 'login'
-    }
-  },
-  mounted () {
-  },
-  computed: {
-    tipText (): string {
-      let text = this.state === 'login'
-        ? '已有账号，请'
-        : '未有账号，请'
-      return text
-    },
-    btnText (): string {
-      let text = this.state === 'login'
-        ? '登录'
-        : '注册'
-      return text
-    },
-    reserveBtnText ():string {
-      let text = this.state === 'login'
-        ? '注册'
-        : '登录'
-      return text
-    }
-  },
-  methods: {
-    /* 提交登录或者注册信息 */
-    goLogin () {
-      alert('go Login')
-    },
-    /* 切换登录注册形态 */
-    goRegister () {
-      this.state = this.state === 'login' ? 'register' : 'login'
-      this.$router.push(`/login/${this.state}`)
-    }
+import { Component, Vue } from 'vue-property-decorator'
+@Component
+export default class Login extends Vue {
+  state: string = this.$route.params.type || 'login'
+  get tipText (): string {
+    let text = this.state === 'login'
+      ? '已有账号，请'
+      : '未有账号，请'
+    return text
   }
-})
+  get btnText (): string {
+    let text = this.state === 'login'
+      ? '登录'
+      : '注册'
+    return text
+  }
+  get reserveBtnText ():string {
+    let text = this.state === 'login'
+      ? '注册'
+      : '登录'
+    return text
+  }
+  /* 提交登录或者注册信息 */
+  goLogin () {
+    alert('go Login')
+  }
+  /* 切换登录注册形态 */
+  goRegister () {
+    this.state = this.state === 'login' ? 'register' : 'login'
+    this.$router.push(`/login/${this.state}`)
+  }
+}
 </script>
 
 <style lang="stylus" scoped>

@@ -16,14 +16,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  data () {
-    return {
-      list: ['Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard']
-    }
-  }
-})
+
+import { Vue, Component } from 'vue-property-decorator'
+@Component
+export default class Home extends Vue {
+  list: Array<string> = ['Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard']
+}
 </script>
 
 <style lang="stylus" scoped>
