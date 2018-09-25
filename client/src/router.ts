@@ -1,33 +1,40 @@
-// import Home from '@/views/Home.vue'
-import Demo from '@/views/Demo.vue'
+
 import VueRouter from 'vue-router'
-import Vue from 'vue';
+import Vue from 'vue'
+// 登陆页面
+import adLogin from '@/views/admin/login.vue'
+// 后台
+import adMain from '@/views/admin/main.vue'
+// 后台 - 主页
+import adHome from '@/views/admin/home.vue'
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
   routes: [
     {
-      path: '/',
-      // name: 'demo',
-      component: Demo
-    },
-    /* 登录页面 */
-    {
-      path: '/login/:type',
+      path: '/login',
       name: 'login',
-      component: () => import('@/views/Login.vue')
-    },
-    /* blog页面 */
-    {
-      path: '/blog',
-      name: 'blog',
-      component: () => import('@/views/Blog.vue')
+      meta: {
+        title: '登录页面'
+      },
+      component: adLogin
     },
     {
-      path: '/demo',
-      name: 'demo',
-      component: () => import('@/views/Demo.vue')
+      path: '/',
+      name: 'Admin',
+      meta: {
+        title: '后台'
+      },
+      redirect: '/home',
+      component: adMain,
+      children: [
+        {
+          path: 'home',
+          name: 'home',
+          component: adHome
+        }
+      ]
     }
   ]
 })

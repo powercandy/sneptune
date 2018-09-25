@@ -34,9 +34,17 @@ module.exports = {
     // 主机名
     host: '0.0.0.0',
     // 服务端口
-    port: 8080,
+    port: 8090,
     // 代理
-    proxy: null
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8363',
+        secure: false,
+        pathRewrite: {
+          '/api': ''
+        }
+      }
+    }
   }
 
 }
