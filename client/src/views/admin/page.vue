@@ -1,15 +1,10 @@
 <template>
-  <div>
+  <div class="ad-page">
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-@Component({})
-export default class adHome extends Vue {
-}
+@Component
+export default class adPage extends Vue {}
 </script>
-
-<style lang="stylus">
-
-</style>
