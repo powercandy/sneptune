@@ -1,9 +1,9 @@
 <template>
-  <div class="ad-tag">
+  <div class="ad-content">
     <ad-search :searchLabel="searchLabel"></ad-search>
     <ad-table v-if="array.length"
     :dataArray="array"
-    :labelArray="labelArray">
+    :labelArray="tableLabel">
     </ad-table>
   </div>
 </template>
@@ -18,50 +18,46 @@ import adSearch from '../../components/admin/adSearch.vue'
   adSearch
   }
   })
-export default class adTag extends Vue {
-  searchLabel: string = '添加标签'
-  array: Array<object> = []
-  labelArray: Array<object> = []
+export default class adContent extends Vue {
+  searchLabel: string = '发布文章'
+  tableLabel: Array<object> = [
+    {
+      label: '文章名称',
+      prop: 'title',
+      width: '250'
+    },
+    {
+      label: '分类',
+      prop: 'classify',
+      width: '300'
+    },
+    {
+      label: '阅读量',
+      prop: 'read',
+      width: '100'
+    },
+    {
+      label: '发布时间',
+      prop: 'publish',
+      width: '200'
+    },
+    {
+      label: '操作',
+      prop: 'setting',
+      width: '150'
+    }
+  ]
   totalData: number = 38
+  array: Array<object> = []
+  maxPageNumber: number = 10
+  currentPage: number = 1
+  tableArray: any = []
   mounted () {
-    this.labelArray = [
-      {
-        label: '分类名称',
-        prop: 'title',
-        width: '200'
-      },
-      {
-        label: '缩略名',
-        prop: 'thumbnail',
-        width: '200'
-      },
-      {
-        label: '分类描述',
-        prop: 'description',
-        width: '200'
-      },
-      {
-        label: '排序',
-        prop: 'sort',
-        width: '100'
-      },
-      {
-        label: '文章数量',
-        prop: 'article',
-        width: '100'
-      },
-      {
-        label: '操作',
-        prop: 'setting',
-        width: ''
-      }
-    ]
     let data: any = {
-      title: 'tag',
-      thumbnail: 'img',
-      description: 'sm',
-      sort: '1',
-      article: '1',
+      title: 'contentList',
+      classify: 'tech',
+      read: '0',
+      publish: '2018/9/20 下午5:59:42',
       setting: '11'
     }
     for (let i = 0; i < this.totalData; i++) {
@@ -82,11 +78,15 @@ export default class adTag extends Vue {
       }
     }
   }
+  cellName (e: any) {
+    console.log(e)
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-.ad-tag
+.ad-content
   background-color #fff
   padding 10px
+
 </style>

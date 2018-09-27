@@ -2,29 +2,29 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 // 登陆页面
-import adLogin from '@/views/admin/login.vue'
+import adLogin from './views/admin/login.vue'
 // 后台
-import adMain from '@/views/admin/main.vue'
-// 后台 - 主页
-import adHome from '@/views/admin/home.vue'
+import adMain from './views/admin/main.vue'
 // 后台 - 控制台
-import adController from '@/views/admin/controller.vue'
+import adController from './views/admin/controller.vue'
 // 后台 - 评论管理
-import adComment from '@/views/admin/comment.vue'
-// 后台 - 内容管理
-import adContent from '@/views/admin/content.vue'
+import adComment from './views/admin/comment.vue'
+// 后台 - 内容管理-列表
+import contentList from './views/admin/contentList.vue'
+// 后台 - 内容管理-编辑
+import contentEditor from './views/admin/contentEditor.vue'
 // 后台 - 页面管理
-import adPage from '@/views/admin/page.vue'
+import adPage from './views/admin/page.vue'
 // 后台 - 分类管理
-import adClassify from '@/views/admin/classify.vue'
+import adClassify from './views/admin/classify.vue'
 // 后台 - 标签管理
-import adTag from '@/views/admin/tag.vue'
+import adTag from './views/admin/tag.vue'
 // 后台 - 设置管理
-import adSetting from '@/views/admin/setting.vue'
+import adSetting from './views/admin/setting.vue'
 // 后台 - 个人资料
-import adMessage from '@/views/admin/message.vue'
+import adMessage from './views/admin/message.vue'
 // 后台 - 修改密码
-import adModifyPsd from '@/views/admin/modifyPsd.vue'
+import adModifyPsd from './views/admin/modifyPsd.vue'
 
 Vue.use(VueRouter)
 
@@ -44,14 +44,9 @@ export default new VueRouter({
       meta: {
         title: '后台'
       },
-      redirect: '/home',
+      redirect: '/controller',
       component: adMain,
       children: [
-        {
-          path: 'home',
-          name: 'home',
-          component: adHome
-        },
         {
           path: 'controller',
           name: 'controller',
@@ -63,9 +58,14 @@ export default new VueRouter({
           component: adComment
         },
         {
-          path: 'content',
-          name: 'content',
-          component: adContent
+          path: 'content/list',
+          name: 'contentList',
+          component: contentList
+        },
+        {
+          path: 'content/editor',
+          name: 'contentEditor',
+          component: contentEditor
         },
         {
           path: 'page',

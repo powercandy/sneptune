@@ -5,7 +5,7 @@
         aside-header
       </div>
       <ul>
-        <li v-for="(item, index) in asideList" :key="index" @click="selectContent(item.path)">
+        <li v-for="(item, index) in asideList" :key="index" @click="selectContent(item.path, item.prop)" :class="[item.prop === selectTag ? 'select-tag' : '']">
           <i :class="['el-icon', item.icon]"></i>
           <span v-show="hideFlag">{{item.name}}</span>
         </li>
@@ -49,41 +49,56 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class adMain extends Vue {
   asideList: Array<object> = [
     {
+      id: '0',
       name: '控制台',
       icon: 'el-icon-star-off',
-      path: 'controller'
+      prop: 'controller',
+      path: '/controller'
     },
     {
+      id: '1',
       name: '内容管理',
+      prop: 'content',
       icon: 'el-icon-edit-outline',
-      path: 'content'
+      path: '/content/list'
     },
     {
+      id: '2',
       name: '页面管理',
+      prop: 'page',
       icon: 'el-icon-edit',
-      path: 'page'
+      path: '/page'
     },
     {
+      id: '3',
       name: '评论管理',
+      prop: 'comment',
       icon: 'el-icon-menu',
-      path: 'comment'
+      path: '/comment'
     },
     {
+      id: '4',
       name: '分类管理',
+      prop: 'classify',
       icon: 'el-icon-menu',
-      path: 'classify'
+      path: '/classify'
     },
     {
+      id: '5',
       name: '标签管理',
+      prop: 'tag',
       icon: 'el-icon-menu',
-      path: 'tag'
+      path: '/tag'
     },
     {
+      id: '6',
       name: '系统设置',
+      prop: 'setting',
       icon: 'el-icon-setting',
-      path: 'setting'
+      path: '/setting'
     }
   ]
+  selectTag: string = '0'
   hideFlag: Boolean = true
   asideWidth: String = '12.5%'
   account: string = 'admin'
@@ -99,18 +114,21 @@ export default class adMain extends Vue {
     editor: '编辑'
   }
   get _breadcrumbArray () {
-    let array: [] = []
+    let array: Array<object> = []
     let breads: any = this.$route.path.split('/')
-    breads.forEach(v => {
-      if (this.breadcrumbArray[v]) {
-        array.push(this.breadcrumbArray[v])
+    breads.forEach((val: string, index: number, arr: []) => {
+      if (this.breadcrumbArray[val]) {
+        array.push(this.breadcrumbArray[val])
       }
     })
-    console.log(array)
     return array
   }
-  selectContent (path: string) {
+  mounted () {
+    this.selectTag = this.$route.path.split('/')[1]
+  }
+  selectContent (path: string, prop: string) {
     this.$router.push(path)
+    this.selectTag = prop
   }
   hideAside () {
     this.hideFlag = !this.hideFlag
@@ -173,6 +191,12 @@ export default class adMain extends Vue {
     text-align left
     &:hover
       color #fff
+  .select-tag
+    background #363e4f
+    color #2d8cf0
+    border-right 2px solid #2d8cf0
+    &:hover
+      color #2d8cf0
 
 .el-icon
   margin-right 6px
@@ -182,4 +206,6 @@ export default class adMain extends Vue {
   color #333
   .el-breadcrumb
     padding-bottom 20px
+
+
 </style>

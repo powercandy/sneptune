@@ -37,7 +37,6 @@ class adLogin extends Vue {
         }, 3000)
       }
     })
-    console.log(obj)
   }
 }
 export default adLogin

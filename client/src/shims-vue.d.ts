@@ -1,5 +1,6 @@
 // 1. 确保在声明补充的类型之前导入 'vue'
 import Vue from 'vue'
+import { ElMessage } from 'element-ui/types/message';
 
 // declare module '*.vue' {
 //   export default Vue
@@ -10,6 +11,7 @@ import Vue from 'vue'
 declare module 'vue/types/vue' {
 // 3. 声明为 Vue 补充的东西
   interface Vue {
-    $api: any
+    $api: any,
+    $message: ElMessage
   }
 }
