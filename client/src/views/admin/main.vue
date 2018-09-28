@@ -203,9 +203,7 @@ export default class adMain extends Vue {
 
 .el-main
   background-color #E9EEF3
-  color #333
   .el-breadcrumb
     padding-bottom 20px
-
 
 </style>

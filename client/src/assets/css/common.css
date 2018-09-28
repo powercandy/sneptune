@@ -12,6 +12,17 @@ body {
   font-size: 12px;
   color: #495060;
   background-color: #fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+label {
+  display: inline-block;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 12px;
+  font-style: normal;
 }
 
 .text-center {

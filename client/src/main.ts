@@ -6,6 +6,7 @@ import axios from 'axios'
 import api from './assets/js/api'
 /* 引入element.js */
 import './plugins/element.js'
+import './plugins/mavon.js'
 
 /* 将请求方法挂载在vue上 */
 Vue.prototype.$api = api

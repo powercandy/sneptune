@@ -1,6 +1,6 @@
 <template>
   <div class="ad-content">
-    <ad-search :searchLabel="searchLabel"></ad-search>
+    <ad-search :searchLabel="searchLabel" @editorContent=editorContent></ad-search>
     <ad-table v-if="array.length"
     :dataArray="array"
     :labelArray="tableLabel">
@@ -81,6 +81,9 @@ export default class adContent extends Vue {
   cellName (e: any) {
     console.log(e)
   }
+  editorContent () {
+    this.$router.push('/content/editor')
+  }
 }
 </script>
 
@@ -88,5 +91,6 @@ export default class adContent extends Vue {
 .ad-content
   background-color #fff
   padding 10px
+  font-size 12px
 
 </style>
