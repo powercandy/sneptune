@@ -67,14 +67,14 @@ export default class adMain extends Vue {
       name: '页面管理',
       prop: 'page',
       icon: 'el-icon-edit',
-      path: '/page'
+      path: '/page/list'
     },
     {
       id: '3',
       name: '评论管理',
       prop: 'comment',
       icon: 'el-icon-menu',
-      path: '/comment'
+      path: '/comment/list'
     },
     {
       id: '4',
@@ -88,7 +88,7 @@ export default class adMain extends Vue {
       name: '标签管理',
       prop: 'tag',
       icon: 'el-icon-menu',
-      path: '/tag'
+      path: '/tag/list'
     },
     {
       id: '6',

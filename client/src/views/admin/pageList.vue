@@ -1,9 +1,10 @@
 <template>
   <div class="ad-page">
-    <ad-search :searchLabel="searchLabel"></ad-search>
+    <ad-search :searchLabel="searchLabel" @editorContent="editorContent"></ad-search>
     <ad-table v-if="array.length"
     :dataArray="array"
-    :labelArray="labelArray">
+    :labelArray="labelArray"
+    @editorExist="editorExist">
     </ad-table>
   </div>
 </template>
@@ -51,7 +52,8 @@ export default class adPage extends Vue {
       classify: 'css',
       read: '0',
       publish: '2018/9/20 下午5:59:42',
-      setting: '11'
+      setting: '11',
+      slug: 'css'
     }
     for (let i = 0; i < this.totalData; i++) {
       if (i > 9 && i <= 19) {
@@ -70,6 +72,13 @@ export default class adPage extends Vue {
         this.array.push(data)
       }
     }
+  }
+  editorContent () {
+    this.$router.push('/page/editor')
+  }
+  // 编辑内容
+  editorExist (slug: string) {
+    this.$router.push(`/page/editor?slug=${slug}`)
   }
 }
 </script>

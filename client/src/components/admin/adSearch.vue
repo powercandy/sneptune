@@ -1,7 +1,7 @@
 <template>
   <el-row type="flex" justify="space-between">
     <el-col :span="18">
-      <el-button type="primary" size="small" class="publish-btn btn" @click="editorContent">+&nbsp;{{searchLabel}}</el-button>
+      <el-button type="primary" size="small" class="publish-btn btn" @click="editorContent" v-if="show">+&nbsp;{{searchLabel}}</el-button>
     </el-col>
     <el-col :span="6">
       <el-row type="flex" justify="space-around">
@@ -21,6 +21,7 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 @Component
 export default class adSearch extends Vue {
   @Prop(String) searchLabel!: string
+  @Prop({ default: true }) show!: Boolean
   searchText: string = ''
   @Emit('editorContent')
   editorContent () {

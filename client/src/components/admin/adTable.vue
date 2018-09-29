@@ -11,7 +11,7 @@
           <span>{{ scope.row[item.prop] }}</span>
         </p>
         <p v-else>
-          <el-button type="primary" icon="el-icon-edit" size="small"></el-button>
+          <el-button type="primary" icon="el-icon-edit" size="small" @click="editorExist(scope.row.slug)"></el-button>
           <el-button type="danger" icon="el-icon-delete" size="small"></el-button>
         </p>
       </template>
@@ -79,6 +79,9 @@ export default class adTable extends Vue {
   getCurrentPage (page: number) {
     this.currentPage = page
   }
+  editorExist (slug: string) {
+    this.$emit('editorExist', slug)
+  }
 }
 </script>
 
@@ -99,4 +102,8 @@ export default class adTable extends Vue {
 .text-center
   .cell
     text-align center
+    p
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="ad-content-editor">
+  <div class="ad-comment-editor">
     <el-form label-width="80px" :rules="rules" :model="formData">
       <el-form-item label="文章标题" prop="title">
         <el-input placeholder="文章标题" v-model="formData.title"></el-input>
@@ -42,7 +42,7 @@
           <el-checkbox v-for="city in tagList" :label="city" :key="city" name="type">{{city}}</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="文章内容" prop="content">
+      <el-form-item label="文章内容" prop="comment">
         <mavon-editor v-model="formData.mark" fontSize="12px" @change="markDownChange"/>
       </el-form-item>
       <el-form-item>
@@ -58,7 +58,7 @@ import { Vue, Component } from 'vue-property-decorator'
   components: {
   }
   })
-export default class contentEditor extends Vue {
+export default class commentEditor extends Vue {
   formData: any = {
     title: '',
     slug: '',
@@ -112,7 +112,7 @@ export default class contentEditor extends Vue {
 </script>
 
 <style lang="stylus">
-.ad-content-editor
+.ad-comment-editor
   background-color #fff
   padding 10px
   font-size 12px
@@ -125,7 +125,7 @@ export default class contentEditor extends Vue {
     height 32px
   .el-input__icon
     line-height 32px
-  .el-form-item__content
+  .el-form-item__comment
     line-height 32px
   .el-date-editor
     margin-right 10px
@@ -136,7 +136,7 @@ export default class contentEditor extends Vue {
     font-size 12px
 
 .required:before
-  content: '*';
+  comment: '*';
   display: inline-block;
   margin-right: 4px;
   line-height: 1;

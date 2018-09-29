@@ -7,18 +7,24 @@ import adLogin from './views/admin/login.vue'
 import adMain from './views/admin/main.vue'
 // 后台 - 控制台
 import adController from './views/admin/controller.vue'
-// 后台 - 评论管理
-import adComment from './views/admin/comment.vue'
+// 后台 - 评论管理-列表
+import commentList from './views/admin/commentList.vue'
+// 后台 - 评论管理-编辑
+import commentEditor from './views/admin/commentEditor.vue'
 // 后台 - 内容管理-列表
 import contentList from './views/admin/contentList.vue'
 // 后台 - 内容管理-编辑
 import contentEditor from './views/admin/contentEditor.vue'
-// 后台 - 页面管理
-import adPage from './views/admin/page.vue'
+// 后台 - 页面管理-列表
+import pageList from './views/admin/pageList.vue'
+// 后台 - 页面管理-编辑
+import pageEditor from './views/admin/pageEditor.vue'
 // 后台 - 分类管理
 import adClassify from './views/admin/classify.vue'
+// 后台 - 标签管理-列表
+import tagList from './views/admin/tagList.vue'
 // 后台 - 标签管理
-import adTag from './views/admin/tag.vue'
+import tagEditor from './views/admin/tagEditor.vue'
 // 后台 - 设置管理
 import adSetting from './views/admin/setting.vue'
 // 后台 - 个人资料
@@ -53,9 +59,14 @@ export default new VueRouter({
           component: adController
         },
         {
-          path: 'comment',
-          name: 'comment',
-          component: adComment
+          path: 'comment/list',
+          name: 'commentList',
+          component: commentList
+        },
+        {
+          path: 'comment/editor',
+          name: 'commentEditor',
+          component: commentEditor
         },
         {
           path: 'content/list',
@@ -68,9 +79,14 @@ export default new VueRouter({
           component: contentEditor
         },
         {
-          path: 'page',
-          name: 'page',
-          component: adPage
+          path: 'page/list',
+          name: 'pageList',
+          component: pageList
+        },
+        {
+          path: 'page/editor',
+          name: 'pageEditor',
+          component: pageEditor
         },
         {
           path: 'classify',
@@ -78,9 +94,14 @@ export default new VueRouter({
           component: adClassify
         },
         {
-          path: 'tag',
-          name: 'tag',
-          component: adTag
+          path: 'tag/list',
+          name: 'tagList',
+          component: tagList
+        },
+        {
+          path: 'tag/editor',
+          name: 'tagEditor',
+          component: tagEditor
         },
         {
           path: 'setting',

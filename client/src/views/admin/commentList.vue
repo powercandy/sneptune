@@ -1,6 +1,6 @@
 <template>
-  <div class="ad-content">
-    <ad-search :searchLabel="searchLabel" @editorContent=editorContent></ad-search>
+  <div class="ad-comment">
+    <ad-search :searchLabel="searchLabel" @editorContent=editorContent :show="false"></ad-search>
     <ad-table v-if="array.length"
     :dataArray="array"
     :labelArray="tableLabel"
@@ -19,33 +19,47 @@ import adSearch from '../../components/admin/adSearch.vue'
   adSearch
   }
   })
-export default class adContent extends Vue {
+export default class adComent extends Vue {
   searchLabel: string = '发布文章'
   tableLabel: Array<object> = [
     {
       label: '文章名称',
       prop: 'title',
-      width: '250'
+      width: '150'
     },
     {
-      label: '分类',
-      prop: 'classify',
-      width: '300'
-    },
-    {
-      label: '阅读量',
-      prop: 'read',
+      label: '作者',
+      prop: 'author',
       width: '100'
     },
     {
-      label: '发布时间',
-      prop: 'publish',
+      label: 'IP',
+      prop: 'ip',
+      width: '100'
+    },
+    {
+      label: '邮箱',
+      prop: 'email',
       width: '200'
     },
     {
-      label: '操作',
-      prop: 'setting',
+      label: '评论',
+      prop: 'text',
       width: '150'
+    },
+    {
+      label: '显示',
+      prop: 'view',
+      width: '50'
+    },
+    {
+      label: '时间',
+      prop: 'create_time',
+      width: '100'
+    },
+    {
+      label: '操作',
+      prop: 'setting'
     }
   ]
   totalData: number = 38
@@ -55,12 +69,15 @@ export default class adContent extends Vue {
   tableArray: any = []
   mounted () {
     let data: any = {
-      title: 'contentList',
-      classify: 'tech',
-      read: '0',
-      publish: '2018/9/20 下午5:59:42',
+      title: 'commentList',
+      author: 'sneptune',
+      ip: '10.133.37.104',
+      email: '17600112740@163.com',
+      text: 'good',
+      view: '1',
+      create_time: '2018/9/20 下午5:59:42',
       setting: '11',
-      slug: 'tech'
+      slug: 'sneptune'
     }
     for (let i = 0; i < this.totalData; i++) {
       if (i > 9 && i <= 19) {
@@ -83,8 +100,9 @@ export default class adContent extends Vue {
   cellName (e: any) {
     console.log(e)
   }
+  // 新增内容
   editorContent () {
-    this.$router.push('/content/editor')
+    this.$router.push('/comment/editor')
   }
   // 编辑内容
   editorExist (slug: string) {
@@ -94,7 +112,7 @@ export default class adContent extends Vue {
 </script>
 
 <style lang="stylus" scoped>
-.ad-content
+.ad-comment
   background-color #fff
   padding 10px
   font-size 12px

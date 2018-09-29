@@ -1,9 +1,10 @@
 <template>
   <div class="ad-tag">
-    <ad-search :searchLabel="searchLabel"></ad-search>
+    <ad-search :searchLabel="searchLabel" @editorContent="editorContent"></ad-search>
     <ad-table v-if="array.length"
     :dataArray="array"
-    :labelArray="labelArray">
+    :labelArray="labelArray"
+    @editorExist="editorExist">
     </ad-table>
   </div>
 </template>
@@ -62,7 +63,8 @@ export default class adTag extends Vue {
       description: 'sm',
       sort: '1',
       article: '1',
-      setting: '11'
+      setting: '11',
+      slug: 'one'
     }
     for (let i = 0; i < this.totalData; i++) {
       if (i > 9 && i <= 19) {
@@ -81,6 +83,13 @@ export default class adTag extends Vue {
         this.array.push(data)
       }
     }
+  }
+  editorContent () {
+    this.$router.push('/tag/editor')
+  }
+  // 编辑内容
+  editorExist (slug: string) {
+    this.$router.push(`/tag/editor?slug=${slug}`)
   }
 }
 </script>
