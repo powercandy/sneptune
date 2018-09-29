@@ -1,9 +1,10 @@
 <template>
   <div class="ad-classify">
-    <ad-search :searchLabel="searchLabel"></ad-search>
+    <ad-search :searchLabel="searchLabel" @editorContent=editorContent></ad-search>
     <ad-table v-if="array.length"
     :dataArray="array"
-    :labelArray="labelArray">
+    :labelArray="labelArray"
+    @editorExist="editorExist">
     </ad-table>
   </div>
 </template>
@@ -62,7 +63,8 @@ export default class adClassify extends Vue {
       description: 'sm',
       sort: '1',
       article: '1',
-      setting: '11'
+      setting: '11',
+      slug: 'sneptune'
     }
     for (let i = 0; i < this.totalData; i++) {
       if (i > 9 && i <= 19) {
@@ -81,6 +83,14 @@ export default class adClassify extends Vue {
         this.array.push(data)
       }
     }
+  }
+  // 新增内容
+  editorContent () {
+    this.$router.push('/classify/editor')
+  }
+  // 编辑内容
+  editorExist (slug: string) {
+    this.$router.push(`/classify/editor?slug=${slug}`)
   }
 }
 </script>

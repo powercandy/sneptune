@@ -19,8 +19,10 @@ import contentEditor from './views/admin/contentEditor.vue'
 import pageList from './views/admin/pageList.vue'
 // 后台 - 页面管理-编辑
 import pageEditor from './views/admin/pageEditor.vue'
-// 后台 - 分类管理
-import adClassify from './views/admin/classify.vue'
+// 后台 - 分类管理-列表
+import classifyList from './views/admin/classifyList.vue'
+// 后台 - 分类管理-编辑
+import classifyEditor from './views/admin/classifyEditor.vue'
 // 后台 - 标签管理-列表
 import tagList from './views/admin/tagList.vue'
 // 后台 - 标签管理
@@ -89,9 +91,14 @@ export default new VueRouter({
           component: pageEditor
         },
         {
-          path: 'classify',
-          name: 'classify',
-          component: adClassify
+          path: 'classify/list',
+          name: 'classifyList',
+          component: classifyList
+        },
+        {
+          path: 'classify/editor',
+          name: 'classifyEditor',
+          component: classifyEditor
         },
         {
           path: 'tag/list',

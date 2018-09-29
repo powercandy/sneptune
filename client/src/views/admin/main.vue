@@ -81,7 +81,7 @@ export default class adMain extends Vue {
       name: '分类管理',
       prop: 'classify',
       icon: 'el-icon-menu',
-      path: '/classify'
+      path: '/classify/list'
     },
     {
       id: '5',

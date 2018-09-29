@@ -88,7 +88,7 @@ export default class adContent extends Vue {
   }
   // 编辑内容
   editorExist (slug: string) {
-    this.$router.push(`/comment/editor?slug=${slug}`)
+    this.$router.push(`/content/editor?slug=${slug}`)
   }
 }
 </script>

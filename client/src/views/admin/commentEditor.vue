@@ -1,49 +1,26 @@
 <template>
   <div class="ad-comment-editor">
-    <el-form label-width="80px" :rules="rules" :model="formData">
-      <el-form-item label="文章标题" prop="title">
-        <el-input placeholder="文章标题" v-model="formData.title"></el-input>
+    <el-form label-width="80px" :model="formData">
+      <el-form-item label="文章名称" prop="title">
+        <el-input placeholder="文章名称" v-model="formData.title" :disabled="true"></el-input>
       </el-form-item>
-      <el-form-item label="文章标识" prop="slug">
-        <el-input placeholder="文章标识" v-model="formData.slug"></el-input>
+      <el-form-item label="作者" prop="author">
+        <el-input placeholder="作者" v-model="formData.author" :disabled="true"></el-input>
       </el-form-item>
-      <el-form-item label="文章分类" prop="classify">
-        <el-select v-model="formData.classify" placeholder="请选择">
-          <el-option
-            v-for="item in classifyList"
-            :key="item.id"
-            :label="item.label"
-            :value="item.id">
-          </el-option>
-        </el-select>
+      <el-form-item label="IP" prop="ip">
+        <el-input placeholder="ip" v-model="formData.ip" :disabled="true"></el-input>
       </el-form-item>
-      <el-form-item label="缩略图" prop="thumb">
-        <el-input placeholder="缩略图" v-model="formData.thumb"></el-input>
+      <el-form-item label="邮箱" prop="email">
+        <el-input placeholder="ip" v-model="formData.email" :disabled="true"></el-input>
       </el-form-item>
-      <el-form-item label="发布时间" prop="date">
-        <el-date-picker
-          v-model="formData.date"
-          type="date"
-          placeholder="选择日期">
-        </el-date-picker>
-        <el-time-picker
-          v-model="formData.time"
-          placeholder="选择时间">
-        </el-time-picker>
+      <el-form-item label="评论" prop="text">
+        <el-input type="textarea" placeholder="ip" v-model="formData.text" :disabled="true"></el-input>
       </el-form-item>
-      <el-form-item label="状态" porp="status">
-        <el-radio v-model="formData.status" label="1">草稿</el-radio>
-        <el-radio v-model="formData.status" label="2">发布</el-radio>
+      <el-form-item label="显示" prop="view">
+        <el-input placeholder="ip" v-model="formData.view"></el-input>
       </el-form-item>
-      <el-form-item label="标签" prop="tag">
-        <el-checkbox-group
-          v-model="formData.tag"
-          @change="handleCheckAllChange">
-          <el-checkbox v-for="city in tagList" :label="city" :key="city" name="type">{{city}}</el-checkbox>
-        </el-checkbox-group>
-      </el-form-item>
-      <el-form-item label="文章内容" prop="comment">
-        <mavon-editor v-model="formData.mark" fontSize="12px" @change="markDownChange"/>
+      <el-form-item label="时间" prop="time">
+        <el-input placeholder="ip" v-model="formData.create_time" :disabled="true"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">提交</el-button>
@@ -60,49 +37,15 @@ import { Vue, Component } from 'vue-property-decorator'
   })
 export default class commentEditor extends Vue {
   formData: any = {
-    title: '',
-    slug: '',
-    classify: '',
-    thumb: '',
-    date: '',
-    time: '',
-    status: '',
-    tag: [],
-    mark: ''
-  }
-  rules: any = {
-    title: [
-      { required: true, message: '请输入标题', trigger: 'blur' },
-      { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-    ],
-    classify: [
-      { required: true, message: '请选择分类', trigger: 'change' }
-    ],
-    date: [
-      { required: true, message: '请选择发布时间', trigger: 'change' }
-    ],
-    tag: [
-      { type: 'array', required: true, message: '请至少选择一个标签', trigger: 'change' }
-    ]
-  }
-  // 分类列表
-  classifyList: Array<object> = [
-    {
-      id: '1',
-      label: 'javascript'
-    },
-    {
-      id: '2',
-      label: 'css'
-    }
-  ]
-  // 标签列表
-  tagList: Array<string> = ['vue', 'react', 'typescript', 'node', 'css']
-  // 监听选择的标签列表
-  handleCheckAllChange () {
-  }
-  // 监听markdown输入
-  markDownChange () {
+    title: 'commentList',
+    author: 'sneptune',
+    ip: '10.133.37.104',
+    email: '17600112740@163.com',
+    text: 'good',
+    view: '1',
+    create_time: '2018/9/20 下午5:59:42',
+    setting: '11',
+    slug: 'sneptune'
   }
   // 提交信息
   onSubmit () {
@@ -134,13 +77,4 @@ export default class commentEditor extends Vue {
   .el-radio__label
     height 12px
     font-size 12px
-
-.required:before
-  comment: '*';
-  display: inline-block;
-  margin-right: 4px;
-  line-height: 1;
-  font-family: SimSun;
-  font-size: 12px;
-  color: #ed3f14;
 </style>
