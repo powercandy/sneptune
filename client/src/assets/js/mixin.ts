@@ -1,4 +1,4 @@
-const mixin: Object = {
+const mixin: object = {
   filters: {
     addNum (num: string): number {
       return Number(num) + 1

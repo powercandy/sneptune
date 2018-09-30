@@ -25,9 +25,9 @@
               </span>
               <img class="avatar" src="https://secure.gravatar.com/avatar/a71767393008c230de03ae4ad6ba7840" alt="用户头像">
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="message">个人资料</el-dropdown-item>
-                <el-dropdown-item command="modifyPsd">修改密码</el-dropdown-item>
-                <el-dropdown-item command="login">退出后台</el-dropdown-item>
+                <el-dropdown-item command="/message">个人资料</el-dropdown-item>
+                <el-dropdown-item command="/modifyPsd">修改密码</el-dropdown-item>
+                <el-dropdown-item command="/login">退出后台</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </el-col>
@@ -37,7 +37,9 @@
         <el-breadcrumb separator="/">
           <el-breadcrumb-item v-for="(i, k) in _breadcrumbArray" :key="k">{{i}}</el-breadcrumb-item>
         </el-breadcrumb>
-        <router-view></router-view>
+        <transition name="fade">
+          <router-view></router-view>
+        </transition>
       </el-main>
     </el-container>
   </el-container>

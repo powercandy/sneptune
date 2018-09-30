@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'http://localhost:8090/api'
 
 export default {
   /* 登录接口 */
-  login (data: object): any {
+  login (data) {
     return axios({
       method: 'post',
       url: '/login',
@@ -12,7 +12,7 @@ export default {
     })
   },
   /* 注册接口 */
-  register (data: object): any {
+  register (data) {
     return axios({
       method: 'post',
       url: '/register',

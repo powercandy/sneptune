@@ -43,7 +43,7 @@ export default class classifyEditor extends Vue {
         description: '',
         slug: ''
       }
-    }   
+    }
   }
   // 提交信息
   onSubmit () {
